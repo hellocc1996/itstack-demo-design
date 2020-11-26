@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 微信公众号：bugstack虫洞栈 | 专注原创技术专题案例
- * 论坛：http://bugstack.cn
- * Create by 小傅哥 on @2020
+ * 树节点逻辑过滤器接口
+ * <p>
+ * <p>
+ * 定义了适配的通用接口，逻辑决策器、获取决策值，让每一个提供决策能力的节点都必须实现此接口，保证统一性。
  */
 public interface LogicFilter {
 

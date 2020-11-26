@@ -18,12 +18,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 决策树引擎测试
+ * <p>
+ * <p>
+ * <p>
+ * 实际使用还有很多可以优化的点：
+ * 构建决策🌲的过程可以做成可视化的配置页面，然后存到db（mysql、redis）中
+ */
 public class ApiTest {
 
     private Logger logger = LoggerFactory.getLogger(ApiTest.class);
 
+    /**
+     * 决策树实体
+     */
     private TreeRich treeRich;
 
+    /**
+     * 初始化一棵决策树
+     * <p>
+     * <p>
+     * 可以做成可视化页面，拖拉拽的形式构建决策树
+     */
     @Before
     public void init() {
 
@@ -50,7 +67,7 @@ public class ApiTest {
         treeNodeLink_12.setRuleLimitType(1);
         treeNodeLink_12.setRuleLimitValue("woman");
 
-        List<TreeNodeLink> treeNodeLinkList_1 = new ArrayList<>();
+        List<TreeNodeLink> treeNodeLinkList_1 = new ArrayList<TreeNodeLink>();
         treeNodeLinkList_1.add(treeNodeLink_11);
         treeNodeLinkList_1.add(treeNodeLink_12);
 
@@ -79,7 +96,7 @@ public class ApiTest {
         treeNodeLink_112.setRuleLimitType(5);
         treeNodeLink_112.setRuleLimitValue("25");
 
-        List<TreeNodeLink> treeNodeLinkList_11 = new ArrayList<>();
+        List<TreeNodeLink> treeNodeLinkList_11 = new ArrayList<TreeNodeLink>();
         treeNodeLinkList_11.add(treeNodeLink_111);
         treeNodeLinkList_11.add(treeNodeLink_112);
 
@@ -108,7 +125,7 @@ public class ApiTest {
         treeNodeLink_122.setRuleLimitType(5);
         treeNodeLink_122.setRuleLimitValue("25");
 
-        List<TreeNodeLink> treeNodeLinkList_12 = new ArrayList<>();
+        List<TreeNodeLink> treeNodeLinkList_12 = new ArrayList<TreeNodeLink>();
         treeNodeLinkList_12.add(treeNodeLink_121);
         treeNodeLinkList_12.add(treeNodeLink_122);
 
@@ -148,7 +165,7 @@ public class ApiTest {
         treeRoot.setTreeRootNodeId(1L);
         treeRoot.setTreeName("规则决策树");
 
-        Map<Long, TreeNode> treeNodeMap = new HashMap<>();
+        Map<Long, TreeNode> treeNodeMap = new HashMap<Long, TreeNode>();
         treeNodeMap.put(1L, treeNode_01);
         treeNodeMap.put(11L, treeNode_11);
         treeNodeMap.put(12L, treeNode_12);
@@ -163,14 +180,16 @@ public class ApiTest {
 
     @Test
     public void test_tree() {
-        logger.info("决策树组合结构信息：\r\n" + JSON.toJSONString(treeRich));
+        logger.info("决策树结构信息：\r\n" + JSON.toJSONString(treeRich));
 
         IEngine treeEngineHandle = new TreeEngineHandle();
 
-        Map<String, String> decisionMatter = new HashMap<>();
+        //决策规则kv
+        Map<String, String> decisionMatter = new HashMap<String, String>(2);
         decisionMatter.put("gender", "man");
         decisionMatter.put("age", "29");
 
+        //决策
         EngineResult result = treeEngineHandle.process(10001L, "Oli09pLkdjh", treeRich, decisionMatter);
         logger.info("测试结果：{}", JSON.toJSONString(result));
 

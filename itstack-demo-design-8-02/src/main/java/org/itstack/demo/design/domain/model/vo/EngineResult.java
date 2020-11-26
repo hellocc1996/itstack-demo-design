@@ -2,17 +2,35 @@ package org.itstack.demo.design.domain.model.vo;
 
 /**
  * 决策结果
- * 微信公众号：bugstack虫洞栈 | 专注原创技术专题案例
- * 论坛：http://bugstack.cn
- * Create by 付政委 on @2019
  */
 public class EngineResult {
 
-    private boolean isSuccess; //执行结果
-    private String userId;   //用户ID
-    private Long treeId;     //规则树ID
-    private Long nodeId;   //果实节点ID
-    private String nodeValue;//果实节点值
+    /**
+     * 执行结果
+     */
+    private boolean isSuccess;
+
+    /**
+     * 用户ID
+     */
+    private String userId;
+
+    /**
+     * 规则树ID
+     */
+    private Long treeId;
+
+    /**
+     * 果实节点ID
+     */
+    private Long nodeId;
+
+    /**
+     * 果实节点值
+     * <p>
+     * 比如是优惠卷、课程等等
+     */
+    private String nodeValue;
 
     public EngineResult() {
     }

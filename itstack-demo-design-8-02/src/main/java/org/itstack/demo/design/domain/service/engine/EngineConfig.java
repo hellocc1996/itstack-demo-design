@@ -9,16 +9,15 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 微信公众号：bugstack虫洞栈 | 专注原创技术专题案例
- * 论坛：http://bugstack.cn
- * Create by 小傅哥 on @2020
+ * 决策节点配置
  */
 public class EngineConfig {
 
     static Map<String, LogicFilter> logicFilterMap;
 
     static {
-        logicFilterMap = new ConcurrentHashMap<>();
+        //初始化决策节点对应的规则key
+        logicFilterMap = new ConcurrentHashMap<String, LogicFilter>();
         logicFilterMap.put("userAge", new UserAgeFilter());
         logicFilterMap.put("userGender", new UserGenderFilter());
     }
@@ -28,7 +27,7 @@ public class EngineConfig {
     }
 
     public void setLogicFilterMap(Map<String, LogicFilter> logicFilterMap) {
-        this.logicFilterMap = logicFilterMap;
+        EngineConfig.logicFilterMap = logicFilterMap;
     }
 
 }

@@ -4,19 +4,49 @@ import java.util.List;
 
 /**
  * 规则树节点信息
- * 微信公众号：bugstack虫洞栈 | 专注原创技术专题案例
- * 论坛：http://bugstack.cn
- * Create by 小傅哥 on @2020
  */
 public class TreeNode {
 
-    private Long treeId;            //规则树ID
-    private Long treeNodeId;        //规则树节点ID
-    private Integer nodeType;       //节点类型；1子叶、2果实
-    private String nodeValue;       //节点值[nodeType=2]；果实值
-    private String ruleKey;         //规则Key
-    private String ruleDesc;        //规则描述
-    private List<TreeNodeLink> treeNodeLinkList; //节点链路
+    /**
+     * 规则树ID
+     */
+    private Long treeId;
+
+    /**
+     * 规则树节点ID
+     */
+    private Long treeNodeId;
+
+    /**
+     * 节点类型；1子叶、2果实
+     */
+    private Integer nodeType;
+
+    /**
+     * 节点值[nodeType=2]；果实值；
+     * <p>
+     * 可以为某个对象字符串
+     */
+    private String nodeValue;
+
+    /**
+     * 规则Key
+     * <p>
+     * 决策规则字段，例如年龄、性别
+     */
+    private String ruleKey;
+
+    /**
+     * 规则描述
+     */
+    private String ruleDesc;
+
+    /**
+     * 节点链路
+     * <p>
+     * 一个节点可能关联N个子节点，例如树杈
+     */
+    private List<TreeNodeLink> treeNodeLinkList;
 
     public Long getTreeId() {
         return treeId;
