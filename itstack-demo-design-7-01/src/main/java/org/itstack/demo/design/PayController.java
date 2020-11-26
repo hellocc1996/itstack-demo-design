@@ -9,6 +9,19 @@ public class PayController {
 
     private Logger logger = LoggerFactory.getLogger(PayController.class);
 
+    /**
+     * 支付接口
+     * <p>
+     * <p>
+     * 提供了一个支付服务功能，通过提供的必要字段；用户ID、交易ID、金额、渠道、模式，来控制支付方式。
+     *
+     * @param uId
+     * @param tradeId
+     * @param amount
+     * @param channelType
+     * @param modeType¬
+     * @return
+     */
     public boolean doPay(String uId, String tradeId, BigDecimal amount, int channelType, int modeType) {
         // 微信支付
         if (1 == channelType) {

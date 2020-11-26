@@ -4,12 +4,16 @@ import org.itstack.demo.design.pay.mode.IPayMode;
 
 import java.math.BigDecimal;
 
+/**
+ * 支付宝支付
+ */
 public class ZfbPay extends Pay {
 
     public ZfbPay(IPayMode payMode) {
         super(payMode);
     }
 
+    @Override
     public String transfer(String uId, String tradeId, BigDecimal amount) {
         logger.info("模拟支付宝渠道支付划账开始。uId：{} tradeId：{} amount：{}", uId, tradeId, amount);
         boolean security = payMode.security(uId);
